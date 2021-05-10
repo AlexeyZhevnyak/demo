@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p>Ваш текущий город: </p>
+<span th:text="${curLocale}"></span>
+<h1>Form</h1>
+<form action="#" th:action="@{/greeting1}" th:object="${wtr}" th:method="POST">
+    <label>
+        Город
+        <input type="text" th:field="*{city}"/>
+    </label>
+    <input type="submit">
+    <p th:text="${tempar}"></p>
+</form>
+</body>
+</html>
