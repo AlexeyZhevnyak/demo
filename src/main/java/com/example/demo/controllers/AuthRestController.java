@@ -41,7 +41,7 @@ public class AuthRestController {
         );
         String token = jwtTokenProvider.createToken(request.getEmail(), user.getRole().name());
         Map<Object,Object> response = new HashMap<>();
-        response.put("email", request.getEmail());
+        response.put("user", user.getLogin());
         response.put("token", token);
         System.out.println(token);
         return ResponseEntity.ok(response);

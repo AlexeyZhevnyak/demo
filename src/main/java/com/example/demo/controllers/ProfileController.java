@@ -21,14 +21,24 @@ public class ProfileController {
     }
 
     @PostMapping("/profile")
-    public Map<String, String[]> getProfileCities(@RequestHeader("email") String email){
-        User user = userRepository.findByEmail(email).orElseThrow(
-                () -> new UsernameNotFoundException(email)
+//    public Map<String, String[]> getProfileCities(@RequestHeader("email") String email){
+//        User user = userRepository.findByEmail(email).orElseThrow(
+//                () -> new UsernameNotFoundException(email)
+//        );
+//        Map<String, String[]> result = new HashMap<>();
+//
+//        result.put(user.getLogin(), user.getCities().split(";"));
+//        return result;
+//    }
+
+    public Map<String, String[]> test(@RequestHeader("user") String login){
+        User user = userRepository.findByLogin(login).orElseThrow(
+                () -> new UsernameNotFoundException(login)
         );
         Map<String, String[]> result = new HashMap<>();
 
-        result.put(user.getLogin(), user.getCities().split(";"));
+        result.put("user", user.getCities().split(";"));
+        System.out.println(result);
         return result;
     }
-
 }
